@@ -1,0 +1,112 @@
+{
+  "To Do": [
+    {
+      "id": 1767629178973,
+      "text": "buy milk",
+      "color": "c-green"
+    },
+    {
+      "id": 1767629301123,
+      "text": "pick up dry cleaning",
+      "color": "c-green"
+    },
+    {
+      "id": 1767629314567,
+      "text": "call the plumber",
+      "color": "c-yellow"
+    },
+    {
+      "id": 1767629327890,
+      "text": "plan weekend trip",
+      "color": "c-green"
+    },
+    {
+      "id": 1767629400001,
+      "text": "order groceries online",
+      "color": "c-green"
+    },
+    {
+      "id": 1767629400002,
+      "text": "schedule dentist appointment",
+      "color": "c-yellow"
+    }
+  ],
+  "Doing": [
+    {
+      "id": 1767629191041,
+      "text": "clean my room",
+      "color": "c-blue"
+    },
+    {
+      "id": 1767629341234,
+      "text": "write report for work",
+      "color": "c-blue"
+    },
+    {
+      "id": 1767629355678,
+      "text": "organize kitchen shelves",
+      "color": "c-blue"
+    },
+    {
+      "id": 1767629225338,
+      "text": "walk the dog",
+      "color": "c-yellow"
+    },
+    {
+      "id": 1767629400003,
+      "text": "prepare presentation slides",
+      "color": "c-blue"
+    },
+    {
+      "id": 1767629400004,
+      "text": "practice guitar",
+      "color": "c-yellow"
+    }
+  ],
+  "Done": [
+    {
+      "id": 1767629207608,
+      "text": "pay subscription",
+      "color": "c-red"
+    },
+    {
+      "id": 1767629369012,
+      "text": "send email to John",
+      "color": "c-red"
+    },
+    {
+      "id": 1767629383456,
+      "text": "finish reading book",
+      "color": "c-red"
+    },
+    {
+      "id": 1767629400005,
+      "text": "backup computer files",
+      "color": "c-red"
+    }
+  ],
+  "Backlog": [
+    {
+      "id": 1767629400006,
+      "text": "research new project ideas",
+      "color": "c-red"
+    },
+    {
+      "id": 1767629400007,
+      "text": "brainstorm marketing strategies",
+      "color": "c-red"
+    }
+  ],
+  "On Hold": [
+    {
+      "id": 1767629400008,
+      "text": "wait for hardware delivery",
+      "color": "c-red"
+    },
+    {
+      "id": 1767629400009,
+      "text": "pause subscription renewal",
+      "color": "c-red"
+    }
+  ]
+}

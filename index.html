@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Task Board - Standalone</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --card: #fff;
+      --muted: #64748b;
+      --shadow: inset 0 6px 8px rgba(15, 23, 42, 0.6);
+      --gap: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      margin: 0;
+      background: var(--bg);
+      color: #0f172a;
+      padding: 18px;
+    }
+
+    header {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    .header-title {
+      width: 100%;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    .toolbar {
+      width: 100%;
+      align-items: center;
+    }
+
+    input[type="text"] {
+      flex: 1;
+      min-width: 220px;
+      max-width: 510px;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #e6edf3;
+      background: #fff;
+      box-shadow: 0 4px 12px rgba(2, 6, 23, 0.5);
+    }
+
+    select,
+    button {
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #e6edf3;
+      background: #fff;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(2, 6, 23, 0.5);
+    }
+
+    .board {
+      display: flex;
+      gap: var(--gap);
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .column {
+      flex: 1;
+      min-width: 220px;
+      background: #eef2f7;
+      padding: 12px;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      max-height: 70vh;
+      overflow: auto;
+      position: relative;
+    }
+
+    .col-title {
+      font-weight: 600;
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cards {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .card {
+      background: var(--card);
+      padding: 10px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(2, 6, 23, 0.5);
+      cursor: grab;
+      transition: transform .18s ease, box-shadow .18s ease;
+      user-select: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      word-break: break-word;
+    }
+
+    .card:active {
+      cursor: grabbing;
+    }
+
+    .card.dragging {
+      opacity: .6;
+      transform: scale(.98);
+    }
+
+    .fade-in {
+      animation: fadeIn .28s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    .drop-target {
+      outline: 3px dashed var(--drag-color, rgba(2, 6, 23, 0.2));
+      outline-offset: 6px;
+    }
+
+    footer {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .footer-buttons {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .btn-small {
+      padding: 2px 6px;
+      font-size: 12px;
+      color: red;
+    }
+
+    .c-red {
+      background: linear-gradient(180deg, #fee2e2, #fecaca);
+    }
+
+    .c-green {
+      background: linear-gradient(180deg, #dcfce7, #bbf7d0);
+    }
+
+    .c-blue {
+      background: linear-gradient(180deg, #e0f2fe, #bae6fd);
+    }
+
+    .c-yellow {
+      background: linear-gradient(180deg, #fef3c7, #fde68a);
+    }
+
+    .task-controls {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+
+    .column-controls {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="header-title">
+      <h1>Task Board - Standalone</h1>
+    </div>
+    <div class="toolbar">
+      <div class="task-controls">
+        <input id="taskInput" type="text" placeholder="New task..." />
+        <!-- Color Order -->
+        <select id="colorSelect">
+          <option value="c-green">Green</option>
+          <option value="c-blue">Blue</option>
+          <option value="c-red">Red</option>
+          <option value="c-yellow">Yellow</option>
+        </select>
+        <button id="addBtn">Add Task</button>
+      </div>
+
+      <div class="column-controls">
+        <input id="colInput" type="text" placeholder="New column name" />
+        <button id="addColBtn">Add Column</button>
+      </div>
+
+      <input id="fileInput" type="file" accept="application/json" style="display:none" />
+    </div>
+  </header>
+
+  <main>
+    <div class="board" id="board"></div>
+    <footer>
+      <br>
+      <div class="footer-buttons">
+        <button id="exportBtn">Export JSON</button>
+        <button id="importBtn">Import JSON</button>
+      </div>
+      <br>
+      Drag cards between columns. Double-click a task to edit it. Data persists locally.
+    </footer>
+  </main>
+
+  <script>
+    (function () {
+      const STORAGE_KEY = 'Task-Board-Standalone';
+      let state = {};
+
+      const el = id => document.getElementById(id);
+      const board = el('board');
+
+      function save() { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
+      function load() {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (raw) { try { state = JSON.parse(raw); return; } catch (e) { } }
+        state = { 'To Do': [], 'Doing': [], 'Done': [] };
+      }
+
+      function getPrimaryColor(colorClass) {
+        switch (colorClass) {
+          case 'c-red': return '#ef4444';
+          case 'c-green': return '#22c55e';
+          case 'c-blue': return '#3b82f6';
+          case 'c-yellow': return '#f59e0b';
+          default: return 'rgba(2, 6, 23, 0.2)';
+        }
+      }
+
+      function render() {
+        board.innerHTML = '';
+        for (const colName in state) {
+          const column = document.createElement('div');
+          column.className = 'column';
+          column.dataset.col = colName;
+
+          const title = document.createElement('div');
+          title.className = 'col-title';
+          const span = document.createElement('span'); span.textContent = colName;
+          const delBtn = document.createElement('button'); delBtn.textContent = '✕'; delBtn.className = 'btn-small';
+
+          // Column Deletion Confirmation:
+          delBtn.addEventListener('click', () => {
+            const hasTasks = state[colName] && state[colName].length > 0;
+            const message = hasTasks
+              ? `The column "${colName}" contains tasks. Are you sure you want to delete it?`
+              : `Are you sure you want to delete the column "${colName}"?`;
+
+            if (!confirm(message)) return;
+
+            delete state[colName];
+            render();
+            save();
+          });
+
+          title.appendChild(span); title.appendChild(delBtn);
+          column.appendChild(title);
+
+          const cardsDiv = document.createElement('div'); cardsDiv.className = 'cards';
+          state[colName].forEach(task => {
+            const card = document.createElement('div');
+            card.className = `card fade-in ${task.color}`;
+            card.dataset.id = task.id;
+            const textSpan = document.createElement('span'); textSpan.textContent = task.text;
+            textSpan.addEventListener('dblclick', () => {
+              const input = document.createElement('input'); input.type = 'text'; input.value = task.text;
+              textSpan.replaceWith(input);
+              input.focus();
+              input.addEventListener('blur', () => {
+                task.text = input.value.trim() || task.text;
+                render();
+              });
+              input.addEventListener('keydown', (e) => { if (e.key === 'Enter') input.blur(); });
+            });
+
+            const meta = document.createElement('div');
+            meta.className = 'meta';
+            const del = document.createElement('button'); del.textContent = '✕'; del.className = 'btn-small';
+            del.addEventListener('click', () => { state[colName] = state[colName].filter(t => t.id !== task.id); render(); save(); });
+            meta.appendChild(del);
+
+            card.appendChild(textSpan);
+            card.appendChild(meta);
+
+            card.setAttribute('draggable', 'true');
+            card.addEventListener('dragstart', onDragStart);
+            card.addEventListener('dragend', onDragEnd);
+            cardsDiv.appendChild(card);
+          });
+
+          column.appendChild(cardsDiv);
+          column.addEventListener('dragover', e => { e.preventDefault(); column.classList.add('drop-target'); });
+          column.addEventListener('dragleave', () => column.classList.remove('drop-target'));
+          column.addEventListener('drop', onDrop);
+
+          board.appendChild(column);
+        }
+        save();
+      }
+
+      function addTask(text, color) {
+        const id = Date.now() + Math.floor(Math.random() * 1000);
+        const firstCol = Object.keys(state)[0];
+        state[firstCol].push({ id, text, color });
+        render();
+      }
+
+      function addColumn(name) {
+        if (!name) return;                 // empty → do nothing
+        if (state[name]) {                 // duplicate → alert
+          alert('Column already exists');
+          return;
+        }
+        state[name] = [];
+        render();
+        save();
+      }
+
+      // drag logic
+      let dragData = null;
+      function onDragStart(e) {
+        const taskId = this.dataset.id;
+        const fromCol = findTaskColumn(taskId);
+        // Find the task to get its color
+        const task = state[fromCol].find(t => String(t.id) === String(taskId));
+        const taskColor = task ? task.color : '';
+
+        dragData = { id: taskId, from: fromCol, color: taskColor };
+
+        // Set custom CSS variable with the task's color
+        document.body.style.setProperty('--drag-color', getPrimaryColor(taskColor));
+
+        this.classList.add('dragging');
+        e.dataTransfer.effectAllowed = 'move';
+        try { e.dataTransfer.setData('text/plain', JSON.stringify(dragData)); } catch (e) { }
+      }
+      function onDragEnd() {
+        this.classList.remove('dragging');
+        dragData = null;
+        document.querySelectorAll('.column').forEach(c => c.classList.remove('drop-target'));
+
+        // Clear custom CSS variable
+        document.body.style.removeProperty('--drag-color');
+      }
+      function findTaskColumn(id) {
+        for (const col in state) { if (state[col].some(t => String(t.id) === id)) return col; } return null;
+      }
+      function onDrop(e) {
+        e.preventDefault();
+        this.classList.remove('drop-target');
+        let data = dragData;
+        if (!data) { try { data = JSON.parse(e.dataTransfer.getData('text/plain')); } catch (e) { } }
+        if (!data) return;
+        const to = this.dataset.col, from = data.from;
+        if (!from || from === to) return;
+        const task = state[from].find(t => String(t.id) === String(data.id));
+        if (!task) return;
+        state[from] = state[from].filter(t => String(t.id) !== String(data.id));
+        state[to].push(task);
+        render();
+      }
+
+      // UI events
+      el('addBtn').addEventListener('click', () => {
+        const t = el('taskInput').value.trim(); if (!t) return;
+        addTask(t, el('colorSelect').value);
+        el('taskInput').value = '';
+      });
+      el('taskInput').addEventListener('keydown', e => { if (e.key === 'Enter') el('addBtn').click(); });
+
+      el('addColBtn').addEventListener('click', () => {
+        const name = el('colInput').value.trim(); addColumn(name); el('colInput').value = '';
+      });
+      el('colInput').addEventListener('keydown', e => { if (e.key === 'Enter') el('addColBtn').click(); });
+
+      // export/import
+      el('exportBtn').addEventListener('click', () => {
+        const data = JSON.stringify(state, null, 2);
+        const blob = new Blob([data], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+
+        // Get current date and time
+        const now = new Date();
+        const timestamp = now.getFullYear() + '-' +
+          String(now.getMonth() + 1).padStart(2, '0') + '-' +
+          String(now.getDate()).padStart(2, '0') + '_' +
+          String(now.getHours()).padStart(2, '0') + '-' +
+          String(now.getMinutes()).padStart(2, '0') + '-' +
+          String(now.getSeconds()).padStart(2, '0');
+
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `Tasks-${timestamp}.json`;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(url);
+      });
+      el('importBtn').addEventListener('click', () => el('fileInput').click());
+      el('fileInput').addEventListener('change', e => {
+        const f = e.target.files[0]; if (!f) return;
+        const r = new FileReader();
+        r.onload = () => { try { const parsed = JSON.parse(r.result); state = parsed; render(); } catch { alert('Invalid file'); } };
+        r.readAsText(f); e.target.value = '';
+      });
+
+      const colorSelect = el('colorSelect');
+      const taskInput = el('taskInput');
+
+      function updateInputColors() {
+        const selectedClass = colorSelect.value;
+        let bg = '#fff';
+        switch (selectedClass) {
+          case 'c-red': bg = 'linear-gradient(180deg, #fee2e2, #fecaca)'; break;
+          case 'c-green': bg = 'linear-gradient(180deg, #dcfce7, #bbf7d0)'; break;
+          case 'c-blue': bg = 'linear-gradient(180deg, #e0f2fe, #bae6fd)'; break;
+          case 'c-yellow': bg = 'linear-gradient(180deg, #fef3c7, #fde68a)'; break;
+        }
+        colorSelect.style.background = bg;
+        taskInput.style.background = bg;
+      }
+
+      updateInputColors();
+      colorSelect.addEventListener('change', updateInputColors);
+      load(); render();
+    })();
+  </script>
+</body>
+
+</html>

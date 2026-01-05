@@ -5,7 +5,7 @@
 A lightweight, standalone **Kanban-style task board** built with **vanilla HTML, CSS, and JavaScript**.  
 No frameworks, no build tools, no backend - just open the file in your browser and start organizing tasks.
 
-Tasks and columns persist locally **only for you** using `localStorage`, and boards can be exported/imported as JSON for sharing.
+Tasks and columns persist locally **only for you** using `localStorage`, and boards can be exported/imported as JSON for sharing. Click on the image to see it in action:
 
 [![Alt text](screenshots/screenshot.webp)](https://filip-peev.com/task-board/)
 

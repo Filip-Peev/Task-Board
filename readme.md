@@ -1,6 +1,6 @@
 
 
-# Task Board –> [Live Demo](https://filip-peev.com/task-board/)
+# Task Board
 
 A lightweight, standalone **Kanban-style task board** built with **vanilla HTML, CSS, and JavaScript**.  
 No frameworks, no build tools, no backend - just open `index.html` in your browser and start organizing tasks.

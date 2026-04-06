@@ -1,297 +1,180 @@
-[
-  [
-    "Ideas",
-    [
-      {
-        "id": 1772000001001,
-        "text": "AI-powered recommendations",
-        "color": "c-blue"
-      },
-      {
-        "id": 1772000001002,
-        "text": "Mobile-first redesign",
-        "color": "c-green"
-      },
-      {
-        "id": 1772000001003,
-        "text": "Gamification system",
-        "color": "c-yellow"
-      },
-      {
-        "id": 1772000001004,
-        "text": "Public API offering",
-        "color": "c-red"
-      },
-      {
-        "id": 1772000001005,
-        "text": "Plugin marketplace",
-        "color": "c-blue"
-      },
-      {
-        "id": 1772000001006,
-        "text": "Multi-language support",
-        "color": "c-green"
-      },
-      {
-        "id": 1772000001007,
-        "text": "Usage-based pricing",
-        "color": "c-yellow"
-      },
-      {
-        "id": 1772000001008,
-        "text": "White-label solution",
-        "color": "c-red"
-      }
-    ]
+{
+  "Product Roadmap": [
+    {
+      "id": 1712476800200,
+      "text": "Q3 API Integration Strategy",
+      "color": "c-blue"
+    },
+    {
+      "id": 1712476800201,
+      "text": "Customer Feedback Loop Design",
+      "color": "c-yellow"
+    },
+    {
+      "id": 1712476800202,
+      "text": "Legacy System Deprecation Plan",
+      "color": "c-red"
+    },
+    {
+      "id": 1712476800203,
+      "text": "Mobile App Dark Mode Specs",
+      "color": "c-blue"
+    }
   ],
-  [
-    "Backlog",
-    [
-      {
-        "id": 1772000002001,
-        "text": "Add dark mode",
-        "color": "c-blue"
-      },
-      {
-        "id": 1772000002002,
-        "text": "Improve accessibility",
-        "color": "c-green"
-      },
-      {
-        "id": 1772000002003,
-        "text": "Audit dependencies",
-        "color": "c-yellow"
-      },
-      {
-        "id": 1772000002004,
-        "text": "Refactor legacy code",
-        "color": "c-red"
-      },
-      {
-        "id": 1772000002005,
-        "text": "Introduce feature flags",
-        "color": "c-blue"
-      },
-      {
-        "id": 1772000002006,
-        "text": "Add keyboard shortcuts",
-        "color": "c-green"
-      },
-      {
-        "id": 1772000002008,
-        "text": "Error logging improvements",
-        "color": "c-red"
-      },
-      {
-        "id": 1772000002009,
-        "text": "Optimize bundle size",
-        "color": "c-blue"
-      },
-      {
-        "id": 1772000002010,
-        "text": "Upgrade framework version",
-        "color": "c-green"
-      }
-    ]
+  "Urgent Fixes": [
+    {
+      "id": 1712476800204,
+      "text": "Patch: Login Loop on Safari",
+      "color": "c-red"
+    },
+    {
+      "id": 1712476800205,
+      "text": "Database Connection Timeout",
+      "color": "c-red"
+    },
+    {
+      "id": 1712476800206,
+      "text": "CSS: Fix Overflow on Mobile",
+      "color": "c-red"
+    }
   ],
-  [
-    "To Do",
-    [
-      {
-        "id": 1772000003001,
-        "text": "Finalize requirements doc",
-        "color": "c-blue"
-      },
-      {
-        "id": 1772000003002,
-        "text": "Create user flow diagrams",
-        "color": "c-green"
-      },
-      {
-        "id": 1772000003003,
-        "text": "Design login screen",
-        "color": "c-yellow"
-      },
-      {
-        "id": 1772000003004,
-        "text": "Design dashboard widgets",
-        "color": "c-blue"
-      },
-      {
-        "id": 1772000003006,
-        "text": "Configure environment variables",
-        "color": "c-green"
-      },
-      {
-        "id": 1772000003007,
-        "text": "Define database schema",
-        "color": "c-yellow"
-      },
-      {
-        "id": 1772000003008,
-        "text": "Write API documentation",
-        "color": "c-blue"
-      },
-      {
-        "id": 1772000003009,
-        "text": "Create seed data",
-        "color": "c-green"
-      },
-      {
-        "id": 1772000003010,
-        "text": "Plan sprint backlog",
-        "color": "c-yellow"
-      }
-    ]
+  "Backlog": [
+    {
+      "id": 1712476800207,
+      "text": "Refactor Navigation Component",
+      "color": "c-yellow"
+    },
+    {
+      "id": 1712476800208,
+      "text": "Add Tooltips to Toolbar",
+      "color": "c-blue"
+    },
+    {
+      "id": 1712476800209,
+      "text": "Update Dependency Packages",
+      "color": "c-green"
+    },
+    {
+      "id": 1712476800210,
+      "text": "Optimize Image Compression",
+      "color": "c-yellow"
+    }
   ],
-  [
-    "Doing",
-    [
-      {
-        "id": 1772000004001,
-        "text": "Implement login API",
-        "color": "c-red"
-      },
-      {
-        "id": 1772000004002,
-        "text": "Build navigation sidebar",
-        "color": "c-blue"
-      },
-      {
-        "id": 1772000004003,
-        "text": "Connect frontend to backend",
-        "color": "c-green"
-      },
-      {
-        "id": 1772000004004,
-        "text": "Create reusable form components",
-        "color": "c-yellow"
-      },
-      {
-        "id": 1772000004005,
-        "text": "Write integration tests",
-        "color": "c-red"
-      },
-      {
-        "id": 1772000004006,
-        "text": "Implement role permissions",
-        "color": "c-blue"
-      },
-      {
-        "id": 1772000004007,
-        "text": "Add loading states",
-        "color": "c-green"
-      },
-      {
-        "id": 1772000004008,
-        "text": "Handle API error states",
-        "color": "c-yellow"
-      }
-    ]
+  "To Do": [
+    {
+      "id": 1712476800211,
+      "text": "Write Unit Tests for Draggable",
+      "color": "c-blue"
+    },
+    {
+      "id": 1712476800212,
+      "text": "Research WebWorker for JSON",
+      "color": "c-yellow"
+    },
+    {
+      "id": 1712476800213,
+      "text": "Implement Export Auto-Download",
+      "color": "c-green"
+    },
+    {
+      "id": 1712476800214,
+      "text": "Fix Footer Button Alignment",
+      "color": "c-blue"
+    }
   ],
-  [
-    "Review",
-    [
-      {
-        "id": 1772000005001,
-        "text": "PR review: auth module",
-        "color": "c-red"
-      },
-      {
-        "id": 1772000005002,
-        "text": "Design review: dashboard",
-        "color": "c-blue"
-      },
-      {
-        "id": 1772000005003,
-        "text": "QA testing: signup flow",
-        "color": "c-green"
-      },
-      {
-        "id": 1772000005004,
-        "text": "Security review",
-        "color": "c-yellow"
-      },
-      {
-        "id": 1772000005005,
-        "text": "Performance benchmarking",
-        "color": "c-red"
-      },
-      {
-        "id": 1772000005006,
-        "text": "Copy review",
-        "color": "c-blue"
-      }
-    ]
+  "In Progress": [
+    {
+      "id": 1712476800215,
+      "text": "Developing Kanban Board logic",
+      "color": "c-green"
+    },
+    {
+      "id": 1712476800216,
+      "text": "Styling the .card hover state",
+      "color": "c-blue"
+    },
+    {
+      "id": 1712476800217,
+      "text": "Adding touch-event support",
+      "color": "c-yellow"
+    },
+    {
+      "id": 1712476800218,
+      "text": "Refining the fadeIn animation",
+      "color": "c-green"
+    }
   ],
-  [
-    "Done",
-    [
-      {
-        "id": 1772000006001,
-        "text": "Project kickoff",
-        "color": "c-green"
-      },
-      {
-        "id": 1772000006002,
-        "text": "Repository created",
-        "color": "c-green"
-      },
-      {
-        "id": 1772000006003,
-        "text": "CI/CD configured",
-        "color": "c-yellow"
-      },
-      {
-        "id": 1772000006004,
-        "text": "Base layout implemented",
-        "color": "c-blue"
-      },
-      {
-        "id": 1772000006005,
-        "text": "Linting rules added",
-        "color": "c-yellow"
-      },
-      {
-        "id": 1772000006006,
-        "text": "Prettier configured",
-        "color": "c-blue"
-      },
-      {
-        "id": 1772000006007,
-        "text": "Environment secrets set",
-        "color": "c-red"
-      },
-      {
-        "id": 1772000006008,
-        "text": "Initial deployment",
-        "color": "c-green"
-      }
-    ]
+  "Peer Review": [
+    {
+      "id": 1712476800219,
+      "text": "PR #102: LocalStorage logic",
+      "color": "c-yellow"
+    },
+    {
+      "id": 1712476800220,
+      "text": "PR #105: CSS Root Variables",
+      "color": "c-blue"
+    },
+    {
+      "id": 1712476800221,
+      "text": "Documentation for script.js",
+      "color": "c-green"
+    }
   ],
-  [
-    "Blocked",
-    [
-      {
-        "id": 1772000007001,
-        "text": "Waiting for API credentials",
-        "color": "c-red"
-      },
-      {
-        "id": 1772000007002,
-        "text": "Design feedback pending",
-        "color": "c-yellow"
-      },
-      {
-        "id": 1772000007003,
-        "text": "Dependency upgrade issues",
-        "color": "c-red"
-      },
-      {
-        "id": 1772000007004,
-        "text": "Unclear requirements",
-        "color": "c-yellow"
-      }
-    ]
+  "Testing/QA": [
+    {
+      "id": 1712476800222,
+      "text": "Cross-browser testing (Edge)",
+      "color": "c-red"
+    },
+    {
+      "id": 1712476800223,
+      "text": "Stress test JSON export size",
+      "color": "c-yellow"
+    },
+    {
+      "id": 1712476800224,
+      "text": "Validate drag-and-drop index",
+      "color": "c-blue"
+    }
+  ],
+  "Staging": [
+    {
+      "id": 1712476800225,
+      "text": "Deploy to staging server",
+      "color": "c-green"
+    },
+    {
+      "id": 1712476800226,
+      "text": "Verify SSL Certificates",
+      "color": "c-blue"
+    },
+    {
+      "id": 1712476800227,
+      "text": "Final UX sign-off",
+      "color": "c-yellow"
+    }
+  ],
+  "Done": [
+    {
+      "id": 1712476800228,
+      "text": "Initial HTML5 Skeleton",
+      "color": "c-green"
+    },
+    {
+      "id": 1712476800229,
+      "text": "Define Color Palette",
+      "color": "c-green"
+    },
+    {
+      "id": 1712476800230,
+      "text": "Setup File Reader for Import",
+      "color": "c-green"
+    },
+    {
+      "id": 1712476800231,
+      "text": "Enable Card Deletion",
+      "color": "c-green"
+    }
   ]
-]
+}
